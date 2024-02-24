@@ -240,17 +240,19 @@
           <hr />
           <h3 class="padding">Total Cost: <span id="total-cost">0</span> $</h3>
           <hr />
+          <h2>Do you have any coupon?</h2>
           <div class="coupon-code">
             <input
               id="coupon-code"
-              class="border rounded text-white"
+              class="border rounded text-black"
               type="text"
               placeholder="Coupon Code"
             />
             <button
-              onclick="updateGrandTotal('click from apply')"
+              disabled="disabled"
+              onclick="discountApply"
               id="apply-btn"
-              class="btn btn-info text-white apply-btn"
+              class="btn text-white apply-btn"
             >
               Apply
             </button>
@@ -275,12 +277,22 @@
           event.target.parentNode.childNodes[5].childNodes[1].innerText;
         console.log(name, price, category);
 
+        if (
+          getValueById("budget") - parseInt(price) < 0 ||
+          getValueById("cart") + 1 > 6 ||
+          getValueById("left") - 0 < 0
+        ) {
+          alert("You can't take any more");
+          return;
+        }
+
         const selectedContainer = document.getElementById(
           "selected-players-container"
         );
 
-        event.target.parentNode.style.backgroundColor = "green";
-        event.target.parentNode.style.color = "white";
+        event.target.parentNode.style.backgroundColor = "gary";
+        event.target.parentNode.style.color = "silver";
+        event.target.innerText = "Selected";
         const div = document.createElement("div");
         div.classList.add("selected-players");
         const p1 = document.createElement("p");
@@ -293,7 +305,42 @@
         div.appendChild(p2);
         div.appendChild(p3);
         selectedContainer.appendChild(div);
-        totalCost(price);
+
+        function updateBudget(price) {
+          const defaultBudget = document.getElementById("budget").innerText;
+          const convertDefaultBudget = parseInt(defaultBudget);
+          document.getElementById("budget").innerText =
+            convertDefaultBudget - parseInt(price);
+        }
+
+        function updateLeftPlayer() {
+          const defaultLeft = document.getElementById("left").innerText;
+          const convertDefaultLeft = parseInt(defaultLeft);
+          document.getElementById("left").innerText = convertDefaultLeft - 1;
+        }
+
+        const currentValue = document.getElementById("total-cost").innerText;
+        const newValue = parseInt(currentValue) + parseInt(price);
+        document.getElementById("total-cost").innerText = newValue;
+        document.getElementById("grand-total").innerText = newValue;
+
+        function updateCartCount() {
+          const defaultCartCount = document.getElementById("cart").innerText;
+
+          const convertDefaultCartCount = parseInt(defaultCartCount);
+          document.getElementById("cart").innerText =
+            convertDefaultCartCount + 1;
+        }
+
+        const couponCode = document.getElementById("coupon-code");
+        couponCode.addEventListener("keyup", function (event) {
+          const valueText = event.target.value;
+          if (valueText === "champ20") {
+            const token = document.getElementById("apply-btn");
+            token.removeAttribute("disabled");
+            token.style.backgroundColor = "green";
+          }
+        });
       });
     }
 
@@ -301,11 +348,6 @@
     function getValueById(id) {
       const targetElement = document.getElementById(id).innerText;
       return parseInt(targetElement);
-    }
-    function totalCost(value) {
-      const currentValue = document.getElementById("total-cost").innerText;
-      const newValue = parseInt(currentValue) + parseInt(value);
-      document.getElementById("total-cost").innerText = newValue;
     }
   </script>
 </html>
