@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      .menu-container {
+        padding: 20px;
+        background-color: rgb(101, 101, 101);
+        display: flex;
+        justify-content: space-around;
+      }
+      .price-color {
+        color: rgb(255, 249, 249);
+        font-weight: bold;
+      }
+      .main-container {
+        display: flex;
+        padding: 50px;
+        align-items: top;
+        gap: 50px;
+      }
+      .players-container {
+        width: 60%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+      .player-btn {
+        padding: 15px;
+        line-height: 20px;
+        border: none;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+          rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+        border-radius: 4px;
+        margin: 5px;
+        width: 150px;
+        font-size: 17px;
+        text-align: center;
+      }
+      .cart-container {
+        width: 37%;
+        /* border: 1px solid gray; */
+        margin: auto;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+          rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+        border-radius: 5px;
+        padding: 20px;
+        text-align: center;
+        position: absolute;
+        top: 120px;
+        right: 0;
+      }
+      .selected-players {
+        padding: 10px;
+        display: flex;
+        justify-content: space-around;
+      }
+      .coupon-code {
+        display: flex;
+        gap: 8px;
+        padding: 8px;
+      }
+      input {
+        padding: 8px;
+      }
+      .apply-btn {
+        padding: 8px;
+      }
+      .add-btn {
+        padding: 7px;
+        margin: 5px;
+        border: none;
+        cursor: pointer;
+      }
+      .padding {
+        padding: 7px;
+      }
+    </style>
+  </head>
+  <body class="mx-3">
+    <div class="container-fluid">
+      <div class="menu-container">
+        <h3>Budget: <span class="price-color" id="budget">2500</span> $</h3>
+
+        <h3>Cart: <span class="price-color" id="cart">0</span></h3>
+        <h3>left: <span class="price-color" id="left">6</span></h3>
+      </div>
+
+      <div class="main-container">
+        <div class="players-container">
+          <div class="player-btn">
+            <h5>Tamim Iqbal</h5>
+            <h5>Price: <span>400</span> $</h5>
+            <h5>Category: <span>Bat</span></h5>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+          <div class="player-btn">
+            <h5>Mahmudullah Riyad</h5>
+            <h5>Price: <span>300</span> $</h5>
+            <h5>Category: <span>Bat</span></h5>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+
+          <div class="player-btn">
+            <h5>Shakib Al Hasan</h5>
+            <h5>Price: <span>350</span> $</h5>
+            <h5>Category: <span>all-rounder</span></h5>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+          <div class="player-btn">
+            <h5>Mushfiq</h5>
+            <h5>Price: <span>200</span> $</h5>
+            <h5>Category: <span>Bat</span></h5>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+          <div class="player-btn">
+            <h5>Liton Das</h5>
+            <h5>Price: <span>200</span> $</h5>
+            <h5>Category: <span>Bat</span></h5>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+          <div class="player-btn">
+            <h5>Shanto</h5>
+            <h5>Price: <span>350</span> $</h5>
+            <h5>Category: <span>Bat</span></h5>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+          <div class="player-btn">
+            <h5>Mustafiz</h5>
+            <h5>Price: <span>400</span> $</h5>
+            <h5>Category: <span>Ball</span></h5>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+          <div class="player-btn">
+            <h5>taskin</h5>
+            <h5>Price: <span>400</span> $</h5>
+            <h5>Category: <span>Ball</span></h5>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+          <div class="player-btn">
+            <h5>Shoriful</h5>
+            <h5>Price: <span>300</span> $</h5>
+            <h5>Category: <span>Ball</span></h5>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+          <div class="player-btn">
+            <h5>Tanzim Sakib</h5>
+            <h5>Price: <span>300</span> $</h5>
+            <h5>Category: <span>Ball</span></h5>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+          <div class="player-btn">
+            <h5>Tanzid Tamim</h5>
+            <h5>Price: <span>200</span> $</h5>
+            <h5>Category: <span>Bat</span></h5>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+          <div class="player-btn">
+            <h5>Touhid Ridoy</h5>
+            <h5>Price: <span>200</span> $</h5>
+            <h5>Category: <span>Bat</span></h5>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+          <div class="player-btn">
+            <h5>Samim Patowary</h5>
+            <h5>Price: <span>200</span> $</h5>
+            <h5>Category: <span>Bat</span></h5>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+          <div class="player-btn">
+            <h5>Mehedi Miraz</h5>
+            <h5>Price: <span>350</span> $</h5>
+            <h5>Category: <span>all-rounder</span></h5>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+          <div class="player-btn">
+            <h5>Saif Uddin</h5>
+            <h5>Price: <span>350</span> $</h5>
+            <h5>Category: <span>all-rounder</span></h5>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+          <div class="player-btn">
+            <h5>Shommuy sharkar</h5>
+            <h5>Price: <span>200</span> $</h5>
+            <h5>Category: <span>all-rounder</span></h5>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+          <div class="player-btn">
+            <h5>Anamul Haque Bijoy</h5>
+            <h5>Price: <span>200</span> $</h5>
+            <h5>Category: <span>Bat</span></h5>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+          <div class="player-btn">
+            <h5>Imrul Kayes</h5>
+            <h5>Price: <span>200</span> $</h5>
+            <h5>Category: <span>Bat</span></h5>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+          <div class="player-btn">
+            <h5>SalaUddin</h5>
+            <h5>Price: <span>500</span> $</h5>
+            <h5>Category: <span>coach</span></h5>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+
+          <div class="player-btn">
+            <h5>Najmul Abedin Fahim</h5>
+            <h5>Price: <span>500</span> $</h5>
+            <h5>Category: <span>coach</span></h5>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="cart-container">
+          <h2>My Cart</h2>
+          <hr />
+          <div class="selected-players">
+            <div class="name">Name</div>
+            <div class="price">Price</div>
+            <div class="category">Category</div>
+          </div>
+          <div id="selected-players-container"></div>
+          <hr />
+          <h3 class="padding">Total Cost: <span id="total-cost">0</span> $</h3>
+          <hr />
+          <div class="coupon-code">
+            <input
+              id="coupon-code"
+              class="border rounded text-white"
+              type="text"
+              placeholder="Coupon Code"
+            />
+            <button
+              onclick="updateGrandTotal('click from apply')"
+              id="apply-btn"
+              class="btn btn-info text-white apply-btn"
+            >
+              Apply
+            </button>
+          </div>
+          <hr />
+          <h3 class="padding">
+            Grand Total: <span id="grand-total">0</span> $
+          </h3>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script></script>
+</html>
